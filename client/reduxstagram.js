@@ -13,7 +13,7 @@ const router = (
   <Router history = {history}>
    <Route path = "/" component = {App}>
     <IndexRoute component = {PhotoGrid}/>
-    <Route path = "/view" component = {Single}/>
+    <Route path = "/view/:postId" component = {Single}/>
    </Route>
   </Router>
   </Provider>
