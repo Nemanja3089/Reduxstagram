@@ -8,8 +8,13 @@ export default class Main extends React.Component {
         <h1>
           <Link to="/">Reduxstagram</Link>
         </h1>
+        {this.props.children}
 
       </div>
     );
   }
 };
+
+React.propTypes = {
+  children:React.PropTypes.element
+}
