@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import App from "./components/App";
 import Single from "./components/Single";
-import PhotoGrid from "./components/PhotoGrid";
+import PhotoGridContainer from "./components/PhotoGridContainer";
 import css from "./styles/style.styl";
 import { Router, Route, IndexRoute, browserHistory } from "react-router";
 import { Provider } from "react-redux";
@@ -12,7 +12,7 @@ const router = (
   <Provider store = {store}>
   <Router history = {history}>
    <Route path = "/" component = {App}>
-    <IndexRoute component = {PhotoGrid}/>
+    <IndexRoute component = {PhotoGridContainer}/>
     <Route path = "/view/:postId" component = {Single}/>
    </Route>
   </Router>
