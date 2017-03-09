@@ -37,3 +37,21 @@
 //       log.snapshot().end()
 //     })
 // })
+Cypress.addParentCommand("makeComments", function(){
+  var AUTHOR = 'Jack'
+  var COMMENT = ' default comment'
+  var cmd = Cypress.Log.command({
+    name: "create default comments",
+    message: [],
+    onConsole: function(){
+      return {
+        "Inserted comment": [ AUTHOR, COMMENT ]
+      }
+    }
+  })
+  cy
+  .chain()
+  .get('.control-buttons:first').find('a.button').click()
+  .get('input[type=text]:first').type(AUTHOR, {log: false})
+  .get('input[type=text]:last').type(COMMENT, {log: false}).type('{enter}')
+})
