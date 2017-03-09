@@ -5,8 +5,8 @@ describe('Reduxtagram', () => {
     .viewport(650,800)
   })
 
-  context('When user lowers screen width', () => {
-     it('Displays correct titles and headers', () => {
+  context('Displays correct titles and headers', () => {
+     it('Display correct title', () => {
        cy.title().should('be.eq','Reduxstagram')
      })
      it('Check main page title', () => {
