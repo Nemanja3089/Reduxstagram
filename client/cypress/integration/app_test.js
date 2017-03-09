@@ -88,4 +88,33 @@ describe('Reduxtagram', () => {
        .get('.comment-count').should('contain','5')
      })
   })
+  context('Incresing likes and comments with the simulation of movement across the page', () => {
+    it('Increse like and go to other picture', () => {
+      cy
+      .get('.likes:first').should('contain','56').dblclick().should('contain','56')
+      .click().click().should('contain','58')
+      .get('.grid-photo-wrap:first').click().get('.likes').should('contain','58')
+      .go(-1).get('likes:first').should('contain','58')
+    })
+
+    it('Increase likes and reload page', () => {
+      cy
+      .get('.likes:first').click().reload()
+      .get('.likes:first').should('contain','57')
+      // This is error because after reload the page we must have remembered likes and change the state
+    })
+
+    it('Make comment and go back to main page', () => {
+      cy
+      .makeComments().get('a.button').should('contain','5').go(-1)
+      .get('.control-buttons:first').find('a.button').should('contain','5')
+    })
+
+    it('Making commet and reload page', () => {
+      cy
+      .makeComments().reload().get('a.button').should('contain','5')
+      // This is error because after reload the page we must have new comment that
+      // we make and update the state
+    })
+  })
 })
